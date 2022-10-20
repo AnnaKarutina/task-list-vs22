@@ -1,8 +1,11 @@
 const form = document.querySelector('#add-task')
 const taskList = document.querySelector('#task-list')
+const deleteTasks = document.querySelector('#delete-tasks')
 
 form.addEventListener('submit', addTask)
 taskList.addEventListener('click', deleteTask)
+deleteTasks.addEventListener('click', deleteAllTasks)
+
 
 function addTask(event) {
     // get form input value
@@ -32,5 +35,12 @@ function deleteTask(event) {
         if(confirm('Are you sure to delete this task?')){
             event.target.parentElement.remove()
         }
+    }
+}
+
+function deleteAllTasks(event) {
+   // taskList.innerHTML = ''
+    while (taskList.firstChild){
+        taskList.removeChild(taskList.firstChild)
     }
 }
